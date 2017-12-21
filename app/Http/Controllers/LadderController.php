@@ -30,9 +30,6 @@ class LadderController extends Controller
      */
     public function index()
     {
-        //$cards = Card::inRandomOrder()->take(3)->get();
-        //return view('home', compact('cards'));
-
         $teams = Ladder::orderBy('name', 'asc')->get();
 
         return view('home', compact('teams'));
@@ -65,14 +62,4 @@ class LadderController extends Controller
 
 	    return redirect()->back();
 	}
-
-	/**
-     * Return al team positions from the ladder.
-     *
-     * @return \Illuminate\Http\Response
-     */
-	public function liveladder ()
-	{
-    	return Ladder::all(['id', 'name', 'position']);
-    }
 }

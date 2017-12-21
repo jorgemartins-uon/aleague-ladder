@@ -18,13 +18,14 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the application ladder.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $cards = Card::inRandomOrder()->take(3)->get();
-        return view('home', compact('cards'));
+        $teams = Ladder::orderBy('name', 'asc')->get();
+
+        return view('home', compact('teams'));
     }
 }
